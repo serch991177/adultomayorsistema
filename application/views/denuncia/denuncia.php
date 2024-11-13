@@ -254,13 +254,23 @@
 					 <span class="form-error"><?php echo lang('alfanumerico.guion') ?></span>
 				</label>
 			</div>
-      <div class="large-8 medium-12 small-12 columns">
+      <div class="large-6 medium-12 small-12 columns">
 				<label>
 					<?php echo lang('domicilio') ?>
 					 <input type="text" required pattern="^[a-zA-Z#º.\d\s]+$" name="denunciante[direccion]" id="denunciante_direccion">
 					 <span class="form-error"><?php echo lang('alfabetico.espacio') ?></span>
 				</label>
 			</div>
+
+			<div class="large-6 medium-12 small-12 columns">
+				<label>
+					Descripcion de la denuncia
+					<textarea required pattern="[a-zA-ZñÑ\s]+" name="denuncia[descripcion]" id="denunciate_denuncia" oninput="this.value = this.value.toUpperCase();"></textarea>
+				</label>
+			</div>
+
+
+
 			<div class="large-12 medium-12 small-12 columns">
 				<label><?php echo lang('procedencia.denunciante') ?></label>
 			</div>

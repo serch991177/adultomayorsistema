@@ -73,7 +73,7 @@ class Denuncias extends CI_Controller{
 
     public function registrar()
 	{
-
+    //echo '<pre>'; var_dump($this->input->post()); exit; echo '</pre>';
 		$this->form_validation->set_rules('denunciante[nombre_completo]', lang('nombre.completo'), 'trim|required|mb_strtoupper');
 		$this->form_validation->set_rules('denunciante[dni_denunciante]', lang('dni'), 'trim|required|mb_strtoupper');
     $this->form_validation->set_rules('denunciante[expedido_denunciante]', lang('expedido'), 'trim|required|mb_strtoupper');
