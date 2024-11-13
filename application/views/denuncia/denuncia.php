@@ -721,18 +721,25 @@
 						<input type="checkbox" name="psicologico_visita[]" value="INFORME DE CONTENCIÓN" id="psic_cont"><?php echo lang('informe.contencion') ?>
 					</label>
 				</div>
+				
 				<div class="large-4 medium-4 small-4 columns">
-					<label >
-						<input type="checkbox" name="psicologico_visita[]" value="ABORDAJE PSICOLÓGICO" id="psic_abo"><?php echo lang('abordaje') ?>
+					<label>
+						<input type="checkbox" name="psicologico_visita[]" value="VISITA DOMICILIARIA" id="psic_vista"> <?php echo lang('informe.visita') ?>
 					</label>
 				</div>
+				
 				<div class="large-4 medium-4 small-4 columns">
-					<label >
-						<input type="checkbox" name="psicologico_visita[]" value="ABORDAJE PSICOSOCIAL" id="psic_soc"><?php echo lang('abordaje.psicosocial') ?>
-					</label>
+                    <label>
+						<input type="checkbox" name="psicologico_visita[]" value="INFORME PSICOSOCIAL" id="psic_psicosocial"><?php echo lang('informe.psicosocial') ?>
+					</label>  
 				</div>
 
-
+				<div class="large-6 medium-6 small-6 columns">
+					<label>
+						<input type="checkbox" name="psicologico_visita[]" value="INFORME PSICOLÓGICO PRELIMINAR" id="psic_preliminar"><?php echo lang('informe.preliminar') ?>
+					</label>
+				</div>
+				
 				<div class="large-12 medium-12 small-12 columns">
   				<label>
   					<?php echo lang('coordinacion') ?>
@@ -1183,8 +1190,8 @@ $('.editarpsicologico').click(function() {
 
 			var informepsicologico_visita = data.visita;
 
-
-			switch (informepsicologico_visita)
+			   
+			/*switch (informepsicologico_visita)
 			{
 
 			 case 'NOTA INFORME':  $("#psic_nota").prop( "checked", true );  break;
@@ -1252,6 +1259,31 @@ $('.editarpsicologico').click(function() {
 			 case 'INFORME DE SEGUIMIENTO PSICOLÓGICO, INFORME PSICOLÓGICO, INFORME DE CONTENCIÓN, ABORDAJE PSICOLÓGICO, ABORDAJE PSICOSOCIAL':  $("#psic_seg,#psic_psic,#psic_cont,#psic_abo,#psic_soc").prop( "checked", true );  break;
 
 			 case 'NOTA INFORME, INFORME DE SEGUIMIENTO PSICOLÓGICO, INFORME PSICOLÓGICO, INFORME DE CONTENCIÓN, ABORDAJE PSICOLÓGICO, ABORDAJE PSICOSOCIAL':  $("#psic_nota,#psic_seg,#psic_psic,#psic_cont,#psic_abo,#psic_soc").prop( "checked", true );  break;
+			}*/
+			$("input[type='checkbox']").prop("checked", false);
+			switch (informepsicologico_visita) {
+				case 'NOTA INFORME':  $("#psic_nota").prop( "checked", true );  break;
+				case 'INFORME DE SEGUIMIENTO PSICOLÓGICO':  $("#psic_seg").prop( "checked", true );  break;
+				case 'INFORME PSICOLÓGICO':  $("#psic_psic").prop( "checked", true ); break;
+				case 'INFORME DE CONTENCIÓN': $("#psic_cont").prop( "checked", true ); break;
+				case 'VISITA DOMICILIARIA': $("#psic_vista").prop( "checked", true ); break;
+				case 'INFORME PSICOSOCIAL': $("#psic_psicosocial").prop( "checked", true ); break;
+				case 'INFORME PSICOLÓGICO PRELIMINAR': $("#psic_preliminar").prop( "checked", true ); break;
+				  
+				default:
+				// Las combinaciones de opciones
+				let checkboxes = [];
+				// Comprobamos si la cadena contiene ciertos términos y agregamos los checkboxes correspondientes
+				if (informepsicologico_visita.includes('NOTA INFORME')) checkboxes.push("#psic_nota");
+				if (informepsicologico_visita.includes('INFORME DE SEGUIMIENTO PSICOLÓGICO')) checkboxes.push("#psic_seg");
+				if (informepsicologico_visita.includes('INFORME PSICOLÓGICO')) checkboxes.push("#psic_psic");
+				if (informepsicologico_visita.includes('INFORME DE CONTENCIÓN')) checkboxes.push("#psic_cont");
+				if (informepsicologico_visita.includes('VISITA DOMICILIARIA')) checkboxes.push("#psic_vista");
+				if (informepsicologico_visita.includes('INFORME PSICOSOCIAL')) checkboxes.push("#psic_psicosocial");
+				if (informepsicologico_visita.includes('INFORME PSICOLÓGICO PRELIMINAR')) checkboxes.push("#psic_preliminar");
+				// Marcamos todos los checkboxes seleccionados
+				$(checkboxes.join(",")).prop("checked", true);
+				break;
 			}
 
 			var psicologico_grupo_terapia = data.grupo_terapia;
@@ -1259,26 +1291,23 @@ $('.editarpsicologico').click(function() {
 
 			switch (psicologico_grupo_terapia)
 			{
-
-			 case 'TERAPIA INDIVIDUAL':  $("#psic_ind").prop( "checked", true );  break;
-			 case 'TERAPIA FAMILIAR':  $("#psic_fam").prop( "checked", true );  break;
-			 case 'TERAPIA DE PAREJA':  $("#psic_par").prop( "checked", true ); break;
-			 case 'TERAPIA OCUPACIONAL': $("#psic_ocup").prop( "checked", true ); break;
-			 case 'NINGUNO': $("#psic_nin").prop( "checked", true ); break;
-			 case 'TERAPIA INDIVIDUAL, TERAPIA FAMILIAR':  $("#psic_ind,#psic_fam").prop( "checked", true );  break;
-			 case 'TERAPIA INDIVIDUAL, TERAPIA DE PAREJA':  $("#psic_ind,#psic_par").prop( "checked", true );  break;
-			 case 'TERAPIA INDIVIDUAL, TERAPIA OCUPACIONAL':  $("#psic_ind,#psic_ocup").prop( "checked", true );  break;
-			 case 'TERAPIA FAMILIAR, TERAPIA DE PAREJA':  $("#psic_fam,#psic_par").prop( "checked", true );  break;
-			 case 'TERAPIA FAMILIAR, TERAPIA OCUPACIONAL':  $("#psic_fam,#psic_ocup").prop( "checked", true );  break;
-			 case 'TERAPIA DE PAREJA, TERAPIA OCUPACIONAL':  $("#psic_par,#psic_ocup").prop( "checked", true );  break;
-			 case 'TERAPIA INDIVIDUAL, TERAPIA FAMILIAR, TERAPIA DE PAREJA':  $("#psic_ind,#psic_fam,#psic_par").prop( "checked", true );  break;
-			 case 'TERAPIA INDIVIDUAL, TERAPIA FAMILIAR, TERAPIA OCUPACIONAL':  $("#psic_ind,#psic_fam,#psic_ocup").prop( "checked", true );  break;
-			 case 'TERAPIA INDIVIDUAL, TERAPIA DE PAREJA, TERAPIA OCUPACIONAL':  $("#psic_ind,#psic_par,#psic_ocup").prop( "checked", true );  break;
-			 case 'TERAPIA FAMILIAR, TERAPIA DE PAREJA, TERAPIA OCUPACIONAL':  $("#psic_fam,#psic_par,#psic_ocup").prop( "checked", true );  break;
-			 case 'TERAPIA INDIVIDUAL, TERAPIA FAMILIAR, TERAPIA DE PAREJA, TERAPIA OCUPACIONAL':  $("#psic_ind,#psic_fam,#psic_par,#psic_ocup").prop( "checked", true );  break;
-
-
-
+				case 'TERAPIA INDIVIDUAL':  $("#psic_ind").prop( "checked", true );  break;
+				case 'TERAPIA FAMILIAR':  $("#psic_fam").prop( "checked", true );  break;
+				case 'TERAPIA DE PAREJA':  $("#psic_par").prop( "checked", true ); break;
+				case 'TERAPIA OCUPACIONAL': $("#psic_ocup").prop( "checked", true ); break;
+				case 'NINGUNO': $("#psic_nin").prop( "checked", true ); break;
+				default:
+				// Las combinaciones de opciones
+				let checkboxes = [];
+				// Comprobamos si la cadena contiene ciertos términos y agregamos los checkboxes correspondientes
+				if (psicologico_grupo_terapia.includes('TERAPIA INDIVIDUAL')) checkboxes.push("#psic_ind");
+				if (psicologico_grupo_terapia.includes('TERAPIA FAMILIAR')) checkboxes.push("#psic_fam");
+				if (psicologico_grupo_terapia.includes('TERAPIA DE PAREJA')) checkboxes.push("#psic_par");
+				if (psicologico_grupo_terapia.includes('TERAPIA OCUPACIONAL')) checkboxes.push("#psic_ocup");
+				if (psicologico_grupo_terapia.includes('NINGUNO')) checkboxes.push("#psic_nin");
+				// Marcamos todos los checkboxes seleccionados
+				$(checkboxes.join(",")).prop("checked", true);
+				break;	  
 			}
 
 		});
