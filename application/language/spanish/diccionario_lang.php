@@ -51,7 +51,7 @@
    $lang['categorias']                 =   "Categorías";
    $lang['centro']                     =   "Centro";
    $lang['centros']                    =   "Centros";
-   $lang['codigo']                     =   "Código";
+   $lang['codigo']                     =   "N° de caso";
    $lang['cobros.beneficiario']        =   "Cobros realizados por el Beneficiario";
    $lang['contabilidad']               =   "Contabilidad";
    $lang['cambiar.contrasenia']        =   "Cambiar Contraseña";
