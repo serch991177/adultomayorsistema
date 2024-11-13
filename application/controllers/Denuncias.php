@@ -228,6 +228,7 @@ class Denuncias extends CI_Controller{
 }
 	public function editar()
 	{
+    //echo '<pre>'; var_dump("hola"); exit; echo '</pre>';
     mb_internal_encoding("UTF-8");
     $this->form_validation->set_rules('denuncia[id_categoria_secundaria]', lang('tipologia.secundaria'));
     $this->form_validation->set_rules('denuncia[id_categoria]', lang('tipologia'), 'trim|required');
@@ -321,7 +322,7 @@ class Denuncias extends CI_Controller{
 
         $id_vic=$this->input->post('id_victima');
       $existe_denunciado = $this->main->total('denunciado', array('dni'=>$denunciado['dni']));
-
+      //echo '<pre>'; var_dump($existe_denunciado,$denunciado['dni']); exit; echo '</pre>';
       if($existe_denunciado == 0){
 
         $denuncia['id_denunciado'] = $this->main->insert('denunciado',$denunciado);

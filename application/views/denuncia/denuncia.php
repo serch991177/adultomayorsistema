@@ -507,6 +507,27 @@
   				</label>
   			</div>
 
+			    <div class="large-3 medium-5 small-6 columns">
+					<label>
+						Edad
+						<input type="text" pattern="[0-9]+[-a-zA-Z]{0,4}" name="denunciado[edad]" id="denunciado_edad">
+					</label>
+				</div>
+
+				<div class="large-3 medium-5 small-6 columns">
+					<label>
+						Domicilio
+						<input type="text" pattern="[a-zA-ZñÑ\s]+" name="denunciado[domicilio]" id="denunciado_domicilio">
+					</label>
+				</div>
+				
+				<div class="large-3 medium-5 small-6 columns">
+                    <label>
+						Celular/teléfono
+						<input type="text" pattern="[0-9]+[-a-zA-Z]{0,4}" name="denunciado[celular]" id="denunciado_celular">
+					</label>
+				</div>
+				
 				<div class="large-2 medium-4 small-6 columns">
 					<label>
 						<?php echo lang('expedido') ?>
@@ -1016,11 +1037,11 @@ $('#denunciado_dni').change(function(){
 		dataType: "json",
 		data: dataString,
 		success: function(response) {
-
-					$('#denunciado_nombre_completo').val(response.data.nombre_completo);
-					$('#denunciado_editar_expedido').val(response.data.expedido_denunciante);
-					$('#denunciado_editar_genero').val(response.data.genero);
-					//$('#denuncia_id_denunciado').val(response.data.id_denunciante);
+			
+			$('#denunciado_nombre_completo').val(response.data.nombre_completo);
+			$('#denunciado_editar_expedido').val(response.data.expedido_denunciante);
+			$('#denunciado_editar_genero').val(response.data.genero);
+			//$('#denuncia_id_denunciado').val(response.data.id_denunciante);
 
 		 },
 			error: function(response) {
@@ -1037,14 +1058,15 @@ $('#denunciado_dni').change(function(){
 			$.getJSON('<?php echo site_url('servicio/getDenuncia');?>', { id: id })
 
 			.done(function(data) {
+				
 				$("#denuncia_denunciante").val(data.denunciante);
-        $("#denun_otb").val(data.otb_denuncia);
-        $("#denun_subalcaldia").val(data.sa_denuncia);
+        		$("#denun_otb").val(data.otb_denuncia);
+        		$("#denun_subalcaldia").val(data.sa_denuncia);
 				$("#denun_distrito").val(data.dis_denuncia);
 				$("#denuncia_codigo").val(data.codigo_denuncia);
 				$("#denuncia_id_categoria").val(data.id_categoria);
 				$("#denuncia_id_categoria_secundaria").val(data.id_categoria_secundaria);
-        $("#denuncia_id_centro").val(data.id_centro);
+        		$("#denuncia_id_centro").val(data.id_centro);
 				$("#denuncia_denuncia").val(data.denuncia);
 				$("#denuncia_descripcion").val(data.descripcion);
 				$("#denuncia_id_parentesco").val(data.id_parentesco);
@@ -1052,27 +1074,28 @@ $('#denunciado_dni').change(function(){
 				$("#denuncia_datos_complementarios").val(data.datos_complementarios);
 
 
-        $("#denunciante_editar_dni_denunciante").val(data.dni_denunciante);
+		        $("#denunciante_editar_dni_denunciante").val(data.dni_denunciante);
 				$("#denunciante_editar_expedido").val(data.expedido_denunciante);
-        $("#denunciante_editar_direccion").val(data.direccion);
-        $("#denunciante_editar_telefono").val(data.telefono);
+        		$("#denunciante_editar_direccion").val(data.direccion);
+		        $("#denunciante_editar_telefono").val(data.telefono);
 				$("#denunciante_editar_genero").val(data.genero_denunciante);
 
-        $("#denuncia_victima").val(data.victima);
-        $("#victima_editar_dni").val(data.dni);
+        		$("#denuncia_victima").val(data.victima);
+        		$("#victima_editar_dni").val(data.dni);
 				$("#victima_editar_expedido").val(data.expedido);
-        $("#victima_editar_domicilio").val(data.domicilio);
+        		$("#victima_editar_domicilio").val(data.domicilio);
 				$("#victima_sexo").val(data.sexo);
-        $("#victima_fecha_nacimiento").val(data.fecha_nacimiento);
+        		$("#victima_fecha_nacimiento").val(data.fecha_nacimiento);
 				$("#denunciado_nombre_completo").val(data.nombre_denunciado);
 				$("#denunciado_dni").val(data.denunciado_dni);
 				$("#denunciado_editar_expedido").val(data.expedido_denunciado);
 				$("#denunciado_editar_genero").val(data.genero_denunciado);
-
-
+				$("#denunciado_edad").val(data.edad_denunciado);
+				$("#denunciado_domicilio").val(data.domicilio_denunciado);
+				$("#denunciado_celular").val(data.celular_denunciado);
 				$("#denuncia_id_denuncia").val(data.id_denuncia);
-        $("#denuncia_id_denunciante").val(data.id_denunciante);
-        $("#denuncia_id_victima").val(data.id_victima);
+        		$("#denuncia_id_denunciante").val(data.id_denunciante);
+        		$("#denuncia_id_victima").val(data.id_victima);
 				$("#denunciado_id_denunciado").val(data.id_denunciado);
 
 
