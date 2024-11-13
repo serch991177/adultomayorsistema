@@ -228,6 +228,9 @@
    $lang['informe.contencion']         =  "Informe de Contención";
    $lang['informe.seguimiento.psicologico']   =  "Informe de Seguimiento Psicológico";
    $lang['informe.seg.social']         =  "Informe de Seg. Social";
+   $lang['informe.seg.domiciliaria']         =  "Visita Domiciliaria";
+   $lang['informe.seg.psicosocial']         =  "Informe Psicosocial";
+   $lang['informe.seg.socioeconomico']         =  "Informe Socioeconómico";
    $lang['informe.social']             = "Informe Social";
    $lang['informe.abordaje']           = "Abordaje Social";
    $lang['intervencion.social']        = "Intervenciones Sociales";

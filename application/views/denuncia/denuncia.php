@@ -836,26 +836,33 @@
 						<input type="checkbox" name="social_visita[]" value="NOTA INFORME" id="soc_nota"> <?php echo lang('nota.informe') ?>
 					</label>
 				</div>
+
+
 				<div class="large-4 medium-4 small-4 columns">
-					<label>
-						<input type="checkbox" name="social_visita[]" value="INFORME DE SEGUIMIENTO SOCIAL" id="soc_seg"><?php echo lang('informe.seg.social') ?>
+			        <label>
+						<input type="checkbox" name="social_visita[]" value="VISITA DOMICILIARIA" id="soc_dom"> <?php echo lang('informe.seg.domiciliaria') ?>
 					</label>
 				</div>
+
+				<div class="large-4 medium-4 small-4 columns">
+					<label>
+						<input type="checkbox" name="social_visita[]" value="INFORME PSICOSOCIAL" id="soc_psico"> <?php echo lang('informe.seg.psicosocial') ?>
+					</label>
+				</div>
+
+				<div class="large-5 medium-5 small-5 columns">
+                    <label>
+						<input type="checkbox" name="social_visita[]" value="INFORME SOCIOECONÓMICO" id="soc_socio"> <?php echo lang('informe.seg.socioeconomico') ?>
+					</label>
+				</div>
+				
+				
 				<div class="large-5 medium-5 small-5 columns">
 					<label>
 						<input type="checkbox" name="social_visita[]" value="INFORME SOCIAL" id="soc_inf"><?php echo lang('informe.social') ?>
 					</label>
 				</div>
-				<div class="large-4 medium-4 small-4 columns">
-					<label >
-						<input type="checkbox" name="social_visita[]" value="ABORDAJE SOCIAL" id="soc_soc"><?php echo lang('informe.abordaje') ?>
-					</label>
-				</div>
-				<div class="large-4 medium-4 small-4 columns">
-					<label >
-						<input type="checkbox" name="social_visita[]" value="ABORDAJE PSICOSOCIAL" id="soc_psic"><?php echo lang('abordaje.psicosocial') ?>
-					</label>
-				</div>
+				
 
 				<div class="large-12 medium-12 small-12 columns">
   				<label>
@@ -1296,15 +1303,17 @@ $('.editarsocial').click(function() {
 			var informesocial_visita = data.visita;
 
 
-			switch (informesocial_visita)
+			/*switch (informesocial_visita)
 			{
 
 			 case 'NOTA INFORME':  $("#soc_nota").prop( "checked", true );  break;
+			 //case 'VISITA DOMICILIARIA': $("#soc_dom").prop( "checked",true);break;
 			 case 'INFORME DE SEGUIMIENTO SOCIAL':  $("#soc_seg").prop( "checked", true );  break;
 			 case 'INFORME SOCIAL':  $("#soc_inf").prop( "checked", true ); break;
 			 case 'ABORDAJE SOCIAL': $("#soc_soc").prop( "checked", true ); break;
 			 case 'ABORDAJE PSICOSOCIAL': $("#soc_psic").prop( "checked", true ); break;
 			 case 'NOTA INFORME, INFORME DE SEGUIMIENTO SOCIAL':  $("#soc_nota,#soc_seg").prop( "checked", true );  break;
+
 			 case 'NOTA INFORME, INFORME SOCIAL':  $("#soc_nota,#soc_inf").prop( "checked", true );  break;
 			 case 'NOTA INFORME, ABORDAJE SOCIAL':  $("#soc_nota,#soc_soc").prop( "checked", true );  break;
 			 case 'NOTA INFORME, ABORDAJE PSICOSOCIAL':  $("#soc_nota,#soc_psic").prop( "checked", true );  break;
@@ -1330,7 +1339,34 @@ $('.editarsocial').click(function() {
 			 case 'NOTA INFORME, INFORME SOCIAL, ABORDAJE SOCIAL, ABORDAJE PSICOSOCIAL':  $("#soc_nota,#soc_inf,#soc_soc,#soc_psic").prop( "checked", true );  break;
 			 case 'INFORME DE SEGUIMIENTO SOCIAL, INFORME SOCIAL, ABORDAJE SOCIAL, ABORDAJE PSICOSOCIAL':  $("#soc_seg,#soc_inf,#soc_soc,#soc_psic").prop( "checked", true );  break;
 			 case 'NOTA INFORME, INFORME DE SEGUIMIENTO SOCIAL, INFORME SOCIAL, ABORDAJE SOCIAL, ABORDAJE PSICOSOCIAL':  $("#soc_nota,#soc_seg,#soc_inf,#soc_soc,#soc_psic").prop( "checked", true );  break;
+			}*/
+			$("input[type='checkbox']").prop("checked", false);
+			switch (informesocial_visita) {
+				case 'NOTA INFORME':$("#soc_nota").prop("checked", true);break;
+				case 'VISITA DOMICILIARIA':$("#soc_dom").prop("checked", true);break;
+				case 'INFORME PSICOSOCIAL':$("#soc_psico").prop("checked", true);break;
+				case 'INFORME SOCIOECONÓMICO':$("#soc_socio").prop("checked", true);break;
+				case 'INFORME DE SEGUIMIENTO SOCIAL':$("#soc_seg").prop("checked", true);break;
+				case 'INFORME SOCIAL':$("#soc_inf").prop("checked", true);break;
+				case 'ABORDAJE SOCIAL':$("#soc_soc").prop("checked", true);break;
+				case 'ABORDAJE PSICOSOCIAL':$("#soc_psic").prop("checked", true);break;
+				default:
+				// Las combinaciones de opciones
+				let checkboxes = [];
+				// Comprobamos si la cadena contiene ciertos términos y agregamos los checkboxes correspondientes
+				if (informesocial_visita.includes('NOTA INFORME')) checkboxes.push("#soc_nota");
+				if (informesocial_visita.includes('VISITA DOMICILIARIA')) checkboxes.push("#soc_dom");
+				if (informesocial_visita.includes('INFORME PSICOSOCIAL')) checkboxes.push("#soc_psico");
+				if (informesocial_visita.includes('INFORME SOCIOECONÓMICO')) checkboxes.push("#soc_socio");
+				if (informesocial_visita.includes('INFORME DE SEGUIMIENTO SOCIAL')) checkboxes.push("#soc_seg");
+				if (informesocial_visita.includes('INFORME SOCIAL')) checkboxes.push("#soc_inf");
+				if (informesocial_visita.includes('ABORDAJE SOCIAL')) checkboxes.push("#soc_soc");
+				if (informesocial_visita.includes('ABORDAJE PSICOSOCIAL')) checkboxes.push("#soc_psic");
+				// Marcamos todos los checkboxes seleccionados
+				$(checkboxes.join(",")).prop("checked", true);
+				break;
 			}
+
 
 		});
 });
