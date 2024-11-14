@@ -228,7 +228,7 @@ class Denuncias extends CI_Controller{
 }
 	public function editar()
 	{
-    //echo '<pre>'; var_dump("hola"); exit; echo '</pre>';
+    //echo '<pre>'; var_dump($this->input->post()); exit; echo '</pre>';
     mb_internal_encoding("UTF-8");
     $this->form_validation->set_rules('denuncia[id_categoria_secundaria]', lang('tipologia.secundaria'));
     $this->form_validation->set_rules('denuncia[id_categoria]', lang('tipologia'), 'trim|required');

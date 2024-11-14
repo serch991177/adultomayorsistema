@@ -480,13 +480,195 @@
 						<span class="form-error"><?php echo lang('requerido') ?></span>
 					</label>
 				</div>
-				<div class="large-6 medium-4 small-6 columns">
-  				<label>
-  					<?php echo lang('domicilio') ?>
-  					 <input type="text" pattern="^[a-zA-Z#º\d\s]+$" name="victima[domicilio]" id="victima_editar_domicilio">
-  					 <span class="form-error"><?php echo lang('alfabetico.espacio') ?></span>
-  				</label>
-  			</div>
+				<div class="large-4 medium-4 small-6 columns">
+					<label>
+						<?php echo lang('domicilio') ?>
+						<input type="text" pattern="^[a-zA-Z#º\d\s]+$" name="victima[domicilio]" id="victima_editar_domicilio">
+						<span class="form-error"><?php echo lang('alfabetico.espacio') ?></span>
+					</label>
+				</div>
+				<!--nuevos cambios-->
+				<div class="large-4 medium-4 small-6 columns">
+					<label>
+						Ocupación u oficio
+						<input type="text" pattern="^[a-zA-Z#º\d\s]+$" name="victima[ocupacion_victima]" id="victima_ocupacion">
+					</label>
+				</div>
+			    <div class="large-4 medium-4 small-6 columns">
+					<label>
+						Grado de instruccion
+						<input type="text" pattern="^[a-zA-Z#º\d\s]+$" name="victima[grado_victima]" id="victima_grado">
+					</label>
+				</div>
+				<div class="large-4 medium-4 small-6 columns">
+					<label>
+						Edad
+						<input type="text" pattern="^[a-zA-Z#º\d\s]+$" name="victima[edad_victima]" id="victima_edad">
+					</label>
+				</div>
+				<div class="large-4 medium-4 small-6 columns">
+					<label>
+						Lugar de nacimiento
+						<input type="text" pattern="^[a-zA-Z#º\d\s]+$" name="victima[lugar_nacimiento_victima]" id="victima_nacimiento">
+					</label>
+				</div>
+				<div class="large-4 medium-4 small-6 columns">
+					<label>
+						Cantidad de hijos
+						<input type="text" pattern="^[a-zA-Z#º\d\s]+$" name="victima[hijos_victima]" id="victima_hijos">
+					</label>
+				</div>
+				<div class="large-4 medium-4 small-6 columns">
+					<label>
+						Con quien vive
+						<input type="text" pattern="^[a-zA-Z#º\d\s]+$" name="victima[vive_victima]" id="victima_vive">
+					</label>
+				</div>
+				<div class="large-4 medium-4 small-6 columns"> 
+					<label>
+						Estado Civil
+						<input type="text" pattern="^[a-zA-Z#º\d\s]+$" name="victima[estado_civil_victima]" id="victima_civil">
+					</label>
+				</div>
+				<div class="large-4 medium-4 small-6 columns">
+					<label>
+						Números de referencia
+						<input type="text" pattern="^[a-zA-Z#º\d\s]+$" name="victima[numero_referencia_victima]" id="victima_referencia">
+					</label>
+				</div>
+				<!--radio button Vivienda-->
+				<div class="large-12 medium-12 small-12 columns">
+					<label>Vivienda</label>
+				</div>
+				<div class="large-2 medium-2 small-2 columns">
+					<label >
+						<input type="radio" name="victima[vivienda_victima]" value="ALQUILER" id="victima_alquiler"> Alquiler
+					</label>
+				</div>
+				<div class="large-2 medium-2 small-2 columns">
+					<label>
+						<input type="radio" name="victima[vivienda_victima]" value="ANTICRETICO" id="victima_anticretico"> Anticretico
+					</label>
+				</div>
+				<div class="large-2 medium-2 small-2 columns">
+					<label>
+						<input type="radio" name="victima[vivienda_victima]" value="CASA DE UN FAMILIAR" id="victima_familiar"> Casa de un familiar
+					</label>
+				</div>
+				<div class="large-2 medium-2 small-2 columns">
+					<label>
+						<input type="radio" name="victima[vivienda_victima]" value="OTROS" id="victima_otros"> Otros
+					</label>
+					<input type="text" id="otros_vivienda" name="victima[vivienda_victima_otro]" placeholder="Escriba aquí..." style="display:none;">
+				</div>
+				<!--radio button idiomas que hablan-->
+				<div class="large-12 medium-12 small-12 columns">
+					<label>Idiomas que habla</label>
+				</div>
+				<div class="large-2 medium-2 small-2 columns">
+					<label>
+						<input type="radio" name="victima[idioma_victima]" value="CASTELLANO" id="victima_castellano"> Castellano
+					</label>
+				</div>
+				<div class="large-2 medium-2 small-2 columns">
+					<label>
+						<input type="radio" name="victima[idioma_victima]" value="QUECHUA" id="victima_quechua"> Quechua
+					</label>
+				</div>
+				<div class="large-2 medium-2 small-2 columns">
+                    <label>
+						<input type="radio" name="victima[idioma_victima]" value="AYMARA" id="victima_aymara"> Aymara
+					</label>
+				</div>
+				<div class="large-2 medium-2 small-2 columns">
+                 	<label>
+						<input type="radio" name="victima[idioma_victima]" value="OTROS" id="victima_otros_idioma"> Otros
+					</label>
+					<input type="text" id="otros_idioma" name="victima[idioma_victima_otro]" placeholder="Escriba aquí..." style="display:none">
+				</div>
+				<div class="large-12 medium-12 small-12 columns">
+					<label>Seguro Social</label>
+				</div>
+				<div class="large-2 medium-2 small-2 columns">
+                    <label>
+						<input type="radio" name="victima[seguro_victima]" value="SUS" id="victima_sus"> SUS
+					</label>
+				</div>
+				<div class="large-2 medium-2 small-2 columns">
+					<label>
+						<input type="radio" name="victima[seguro_victima]" value="CAJA BANCARIA" id="victima_caja"> Caja Bancaria
+					</label>
+				</div>
+				<div class="large-2 medium-2 small-2 columns">
+					<label>
+						<input type="radio" name="victima[seguro_victima]" value="CAJA PETROLERA" id="victima_petrolera"> Caja Petrolera
+					</label>
+				</div>
+				<div class="large-2 medium-2 small-2 columns">
+					<label>
+						<input type="radio" name="victima[seguro_victima]" value="COSSMIL" id="victima_cossmil"> Cossmil
+					</label>
+				</div>
+				<div class="large-2 medium-2 small-2 columns">
+					<label>
+						<input type="radio" name="victima[seguro_victima]" value="OTROS" id="victima_otros_seguro"> Otros
+					</label>
+					<input type="text" id="otros_seguro_salud" name="victima[seguro_victima_otro]" placeholder="Escriba aquí..." style="display:none">
+				</div>
+				<div class="large-12 medium-12 small-12 columns">
+                    <label>Beneficio que percibe</label>
+				</div>
+				<div class="large-2 medium-2 small-2 columns">
+                    <label>
+						<input type="radio" name="victima[beneficio_victima]" value="RENTA DIGNIDAD" id="victima_renta"> Renta Dignidad
+					</label>
+				</div>
+				<div class="large-2 medium-2 small-2 columns">
+                   <label>
+					   <input type="radio" name="victima[beneficio_victima]" value="JUBILACIÓN" id="victima_jubilacion"> Jubilación
+				   </label>
+				</div>
+				<div class="large-2 medium-2 small-2 columns">
+                    <label>
+						<input type="radio" name="victima[beneficio_victima]" value="RENTISTA" id="victima_rentista"> Rentista
+					</label>
+				</div>
+				<div class="large-2 medium-2 small-2 columns">
+                    <label>
+						<input type="radio" name="victima[beneficio_victima]" value="OTROS" id="victima_otros_beneficios"> Otros
+					</label>
+					<input type="text" id="otros_benefecios" name="victima[beneficio_victima_otro]" placeholder="Escriba aquí..." style="display:none">
+				</div>
+				<script>
+					$(document).ready(function() {
+						// General function to handle the display of text inputs based on "otros" selection
+						function handleOtrosSelection(radioButtonId, inputId) {
+							// Show or hide the input field based on whether the "otros" option is selected
+							$(radioButtonId).change(function() {
+								if ($(this).is(':checked')) {
+									$(inputId).show();  // Show the input field
+								} else {
+									$(inputId).hide();  // Hide the input field
+									$(inputId).val('');  // Clear the input field
+								}
+							});
+
+							// Hide the input field if any other radio button is selected
+							$('input[name="' + $(radioButtonId).attr('name') + '"]:not(' + radioButtonId + ')').change(function() {
+								$(inputId).hide();  // Hide the input field
+								$(inputId).val('');  // Clear the input field
+							});
+						}
+
+						// Apply the function for each "otros" option and its corresponding input
+						handleOtrosSelection('#victima_otros', '#otros_vivienda');
+						handleOtrosSelection('#victima_otros_idioma', '#otros_idioma');
+						handleOtrosSelection('#victima_otros_seguro', '#otros_seguro_salud');
+						handleOtrosSelection('#victima_otros_beneficios', '#otros_benefecios');
+					});
+				</script>
+
+				<!--fin cambios-->
 				<div class="large-12 medium-12 small-12 columns">
           <h4 class="center"><?php echo lang('editar.denunciado') ?></h4>
         </div>
@@ -1066,87 +1248,147 @@ $('#denunciado_dni').change(function(){
 
 
 	$('.editar').click(function() {
-
 		var id = $(this).attr('content');
-
-			$.getJSON('<?php echo site_url('servicio/getDenuncia');?>', { id: id })
-
-			.done(function(data) {
-				
-				$("#denuncia_denunciante").val(data.denunciante);
-        		$("#denun_otb").val(data.otb_denuncia);
-        		$("#denun_subalcaldia").val(data.sa_denuncia);
-				$("#denun_distrito").val(data.dis_denuncia);
-				$("#denuncia_codigo").val(data.codigo_denuncia);
-				$("#denuncia_id_categoria").val(data.id_categoria);
-				$("#denuncia_id_categoria_secundaria").val(data.id_categoria_secundaria);
-        		$("#denuncia_id_centro").val(data.id_centro);
-				$("#denuncia_denuncia").val(data.denuncia);
-				$("#denuncia_descripcion").val(data.descripcion);
-				$("#denuncia_id_parentesco").val(data.id_parentesco);
-
-				$("#denuncia_datos_complementarios").val(data.datos_complementarios);
-
-
-		        $("#denunciante_editar_dni_denunciante").val(data.dni_denunciante);
-				$("#denunciante_editar_expedido").val(data.expedido_denunciante);
-        		$("#denunciante_editar_direccion").val(data.direccion);
-		        $("#denunciante_editar_telefono").val(data.telefono);
-				$("#denunciante_editar_genero").val(data.genero_denunciante);
-
-        		$("#denuncia_victima").val(data.victima);
-        		$("#victima_editar_dni").val(data.dni);
-				$("#victima_editar_expedido").val(data.expedido);
-        		$("#victima_editar_domicilio").val(data.domicilio);
-				$("#victima_sexo").val(data.sexo);
-        		$("#victima_fecha_nacimiento").val(data.fecha_nacimiento);
-				$("#denunciado_nombre_completo").val(data.nombre_denunciado);
-				$("#denunciado_dni").val(data.denunciado_dni);
-				$("#denunciado_editar_expedido").val(data.expedido_denunciado);
-				$("#denunciado_editar_genero").val(data.genero_denunciado);
-				$("#denunciado_edad").val(data.edad_denunciado);
-				$("#denunciado_domicilio").val(data.domicilio_denunciado);
-				$("#denunciado_celular").val(data.celular_denunciado);
-				$("#denuncia_id_denuncia").val(data.id_denuncia);
-        		$("#denuncia_id_denunciante").val(data.id_denunciante);
-        		$("#denuncia_id_victima").val(data.id_victima);
-				$("#denunciado_id_denunciado").val(data.id_denunciado);
-
-
-				 var denuncia_procedencia = data.procedencia;
-
-
-				 switch (denuncia_procedencia)
-				 {
-
-				 	case 'FAMILIAR':  $("#den_fam").prop( "checked", true );  break;
-					case 'ADULTO MAYOR':  $("#den_am").prop( "checked", true ); break;
-					case 'INSTITUCIONES': $("#den_ins").prop( "checked", true ); break;
-					case 'PERSONA AJENA': $("#den_pa").prop( "checked", true );  break;
-					case NULL : $("#den_fam").attr("checked", false); break;
-					case NULL : $("#den_am").attr("checked", false); break;
-					case NULL : $("#den_ins").attr("checked", false); break;
-					case NULL: $("#den_pa").attr("checked", false); break;
-
-				 }
-
-				 var denuncia_derivacion = data.derivacion;
-
-
-				 switch (denuncia_derivacion)
-				 {
-
-				 	case 'AREA PSICOLOGICA':  $("#den_psic").prop( "checked", true );  break;
-					case 'AREA SOCIAL':  $("#den_soci").prop( "checked", true ); break;
-					case 'NINGUNO': $("#den_nin").prop( "checked", true ); break;
-					case 'AREA PSICOLOGICA, AREA SOCIAL':  $("#den_psic,#den_soci").prop( "checked", true );  break;
-
-
-
-				 }
-
-
-			});
+		$.getJSON('<?php echo site_url('servicio/getDenuncia');?>', { id: id })
+		.done(function(data) {
+			$("#denuncia_denunciante").val(data.denunciante);
+			$("#denun_otb").val(data.otb_denuncia);
+			$("#denun_subalcaldia").val(data.sa_denuncia);
+			$("#denun_distrito").val(data.dis_denuncia);
+			$("#denuncia_codigo").val(data.codigo_denuncia);
+			$("#denuncia_id_categoria").val(data.id_categoria);
+			$("#denuncia_id_categoria_secundaria").val(data.id_categoria_secundaria);
+			$("#denuncia_id_centro").val(data.id_centro);
+			$("#denuncia_denuncia").val(data.denuncia);
+			$("#denuncia_descripcion").val(data.descripcion);
+			$("#denuncia_id_parentesco").val(data.id_parentesco);
+			$("#denuncia_datos_complementarios").val(data.datos_complementarios);
+			$("#denunciante_editar_dni_denunciante").val(data.dni_denunciante);
+			$("#denunciante_editar_expedido").val(data.expedido_denunciante);
+			$("#denunciante_editar_direccion").val(data.direccion);
+			$("#denunciante_editar_telefono").val(data.telefono);
+			$("#denunciante_editar_genero").val(data.genero_denunciante);
+			$("#denuncia_victima").val(data.victima);
+			$("#victima_editar_dni").val(data.dni);
+			$("#victima_editar_expedido").val(data.expedido);
+			$("#victima_editar_domicilio").val(data.domicilio);
+			$("#victima_ocupacion").val(data.ocupacion_victima);
+			$("#victima_grado").val(data.grado_victima);
+			$("#victima_edad").val(data.edad_victima);
+			$("#victima_nacimiento").val(data.lugar_nacimiento_victima);
+			$("#victima_hijos").val(data.hijos_victima);
+			$("#victima_vive").val(data.vive_victima);
+			$("#victima_civil").val(data.estado_civil_victima);
+			$("#victima_referencia").val(data.numero_referencia_victima);
+			$("#victima_sexo").val(data.sexo);
+			$("#victima_fecha_nacimiento").val(data.fecha_nacimiento);
+			$("#denunciado_nombre_completo").val(data.nombre_denunciado);
+			$("#denunciado_dni").val(data.denunciado_dni);
+			$("#denunciado_editar_expedido").val(data.expedido_denunciado);
+			$("#denunciado_editar_genero").val(data.genero_denunciado);
+			$("#denunciado_edad").val(data.edad_denunciado);
+			$("#denunciado_domicilio").val(data.domicilio_denunciado);
+			$("#denunciado_celular").val(data.celular_denunciado);
+			$("#denuncia_id_denuncia").val(data.id_denuncia);
+			$("#denuncia_id_denunciante").val(data.id_denunciante);
+			$("#denuncia_id_victima").val(data.id_victima);
+			$("#denunciado_id_denunciado").val(data.id_denunciado);
+			$("#otros_vivienda").val(data.vivienda_victima_otro);
+			$("#otros_idioma").val(data.idioma_victima_otro);
+			$("#otros_seguro_salud").val(data.seguro_victima_otro);
+			$("#otros_benefecios").val(data.beneficio_victima_otro	);
+			var denuncia_procedencia = data.procedencia;
+			switch (denuncia_procedencia)
+			{
+				case 'FAMILIAR':$("#den_fam").prop("checked", true);break;
+				case 'ADULTO MAYOR':$("#den_am").prop("checked", true);break;
+				case 'INSTITUCIONES':$("#den_ins").prop("checked", true);break;
+				case 'PERSONA AJENA':$("#den_pa").prop("checked", true);break;
+				case null:  // Only handle the null case once
+					$("#den_fam, #den_am, #den_ins, #den_pa").prop("checked", false);
+					break;
+				default:
+				// Optionally handle any other cases that might need to be set to unchecked
+				break;
+				/*case 'FAMILIAR':  $("#den_fam").prop( "checked", true );  break;
+				case 'ADULTO MAYOR':  $("#den_am").prop( "checked", true ); break;
+				case 'INSTITUCIONES': $("#den_ins").prop( "checked", true ); break;
+				case 'PERSONA AJENA': $("#den_pa").prop( "checked", true );  break;
+				case NULL : $("#den_fam").attr("checked", false); break;
+				case NULL : $("#den_am").attr("checked", false); break;
+				case NULL : $("#den_ins").attr("checked", false); break;
+				case NULL: $("#den_pa").attr("checked", false); break;*/
+			}
+			var victima_vivienda = data.vivienda_victima;
+			switch (victima_vivienda)
+			{
+				case 'ALQUILER':$("#victima_alquiler").prop("checked", true);$("#otros_vivienda").hide(); break;
+				case 'ANTICRETICO':$("#victima_anticretico").prop("checked", true);$("#otros_vivienda").hide(); break;
+				case 'CASA DE UN FAMILIAR':$("#victima_familiar").prop("checked", true);$("#otros_vivienda").hide();break;
+				case 'OTROS':$("#victima_otros").prop("checked", true);$("#otros_vivienda").show();break;
+				case null:  // Only handle the null case once
+					$("#victima_alquiler,#victima_anticretico,#victima_familiar,#victima_otros").prop("checked", false);
+					$("#otros_vivienda").hide();
+					break;
+				default:
+				// Optionally handle any other cases that might need to be set to unchecked
+				break;
+			}
+			var victima_idioma = data.idioma_victima;
+			switch (victima_idioma)
+			{
+				case 'CASTELLANO':$("#victima_castellano").prop("checked", true);$("#otros_idioma").hide();break;
+				case 'QUECHUA':$("#victima_quechua").prop("checked", true);$("#otros_idioma").hide();break;
+				case 'AYMARA':$("#victima_aymara").prop("checked", true);$("#otros_idioma").hide();break;
+				case 'OTROS':$("#victima_otros_idioma").prop("checked", true);$("#otros_idioma").show();break;
+				case null:  // Only handle the null case once
+					$("#victima_castellano,#victima_quechua,#victima_aymara,#victima_otros_idioma").prop("checked", false);
+					$("#otros_idioma").hide();
+					break;
+				default:
+				// Optionally handle any other cases that might need to be set to unchecked
+				break;
+			}
+			var victima_seguro = data.seguro_victima;
+			switch (victima_seguro)
+			{
+				case 'SUS':$("#victima_sus").prop("checked", true);$("#otros_seguro_salud").hide();break;
+				case 'CAJA BANCARIA':$("#victima_caja").prop("checked", true);$("#otros_seguro_salud").hide();break;
+				case 'CAJA PETROLERA':$("#victima_petrolera").prop("checked", true);$("#otros_seguro_salud").hide();break;
+				case 'COSSMIL':$("#victima_cossmil").prop("checked", true);$("#otros_seguro_salud").hide();break;
+				case 'OTROS':$("#victima_otros_seguro").prop("checked", true);$("#otros_seguro_salud").show();break;
+				case null:  // Only handle the null case once
+					$("#victima_sus,#victima_caja,#victima_petrolera,#victima_cossmil,#victima_otros_seguro").prop("checked", false);
+					$("#otros_seguro_salud").hide();
+					break;
+				default:
+				// Optionally handle any other cases that might need to be set to unchecked
+				break;
+			}
+			var victima_beneficio = data.beneficio_victima;
+			switch (victima_beneficio)
+			{
+				case 'RENTA DIGNIDAD':$("#victima_renta").prop("checked", true);$("#otros_benefecios").hide();break;
+				case 'JUBILACIÓN':$("#victima_jubilacion").prop("checked", true);$("#otros_benefecios").hide();break;
+				case 'RENTISTA':$("#victima_rentista").prop("checked", true);$("#otros_benefecios").hide();break;
+				case 'OTROS':$("#victima_otros_beneficios").prop("checked", true);$("#otros_benefecios").show();break;
+				case null:  // Only handle the null case once
+					$("#victima_renta,#victima_jubilacion,#victima_rentista,#victima_otros_beneficios").prop("checked", false);
+					$("#otros_benefecios").hide();
+					break;
+				default:
+				// Optionally handle any other cases that might need to be set to unchecked
+				break;
+			}
+			var denuncia_derivacion = data.derivacion;
+			switch (denuncia_derivacion)
+			{
+				case 'AREA PSICOLOGICA':  $("#den_psic").prop( "checked", true );  break;
+				case 'AREA SOCIAL':  $("#den_soci").prop( "checked", true ); break;
+				case 'NINGUNO': $("#den_nin").prop( "checked", true ); break;
+				case 'AREA PSICOLOGICA, AREA SOCIAL':  $("#den_psic,#den_soci").prop( "checked", true );  break;
+			}
+		});
 	});
 
 	$('.editarinforme').click(function() {
@@ -1503,3 +1745,4 @@ $('.editarcerrar').click(function() {
 			 GraficaSoloMarcadores();
 	 });
 </script>
+
