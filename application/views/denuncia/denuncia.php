@@ -793,8 +793,60 @@
 <div class="reveal" id="informelegal" data-reveal="">
 	<form method="post" data-abide accept-charset="utf-8" action="<?php echo site_url('denuncias/editarinforme') ?>">
     	<h3 class="center"><?php echo lang('informe.denuncia.legal') ?></h3>
-
 			<div class="row">
+				<div class="large-12 medium-12 small-12 columns">
+					<label>Acciones Inmediatas</label>
+				</div>
+				<div class="large-4 medium-4 small-4 columns">
+					<label>
+						<input type="radio" name="informe[legal_acciones]" id="legal_asesoramieno" value="ASESORAMIENTO"> Asesoramiento
+					</label>
+				</div>
+				<div class="large-4 medium-4 small-4 columns">
+					<label>
+						<input type="radio" name="informe[legal_acciones]" id="legal_orientacion" value="ORIENTACIÓN"> Orientación
+					</label>
+				</div>
+				<div class="large-4 medium-4 small-4 columns">
+					<label>
+						<input type="radio" name="informe[legal_acciones]" id="legal_acompanamiento" value="ACOMPAÑAMIENTO"> Acompañamiento
+					</label>
+				</div>
+				<div class="large-4 medium-4 small-4 columns">
+					<label>
+						<input type="radio" name="informe[legal_acciones]" id="legal_citacion" value="CITACIÓN/NOTIFICACIÓN"> Citación/notificación
+					</label>
+				</div>
+				<div class="large-4 medium-4 small-4 columns">
+					<label>
+						<input type="radio" name="informe[legal_acciones]" id="legal_suscripcion" value="SUSCRIPCIÓN DE ACTAS"> Suscripción de actas
+					</label>
+				</div>
+				<div class="large-4 medium-4 small-4 columns">
+					<label>
+						<input type="radio" name="informe[legal_acciones]" id="legal_otro" value="OTRO" > Otro
+					</label>
+					<input type="text" id="otros_area_legal" name="informe[informe_legal_otro]" placeholder="Escriba aquí..." style="display:none;">
+				</div>
+				<script>
+					$(document).ready(function() {
+						function handleOtrosSelection(radioButtonId, inputId) {
+							$(radioButtonId).change(function() {
+								if ($(this).is(':checked')) {
+									$(inputId).show();  
+								} else {
+									$(inputId).hide();  
+									$(inputId).val(''); 
+								}
+							});
+							$('input[name="' + $(radioButtonId).attr('name') + '"]:not(' + radioButtonId + ')').change(function() {
+								$(inputId).hide();  
+								$(inputId).val(''); 
+							});
+						}
+						handleOtrosSelection('#legal_otro', '#otros_area_legal');
+					});
+				</script>
 				<div class="large-6 medium-6 small-6 columns">
 					<label>
 						<?php echo lang('remitido') ?>
@@ -809,36 +861,52 @@
 						 <span class="form-error"><?php echo lang('alfabetico') ?></span>
 					</label>
 				</div>
-        <div class="large-12 medium-12 small-12 columns">
-  				<label>
-  					<?php echo lang('tipo.actas') ?>
-  					 <textarea type="text" pattern="[a-zA-ZñÑ\s]+" name="informe[tipo_actas]" id="tipo_actas" rows="4"> </textarea>
-  					 <span class="form-error"><?php echo lang('alfabetico') ?></span>
-  				</label>
-  			</div>
-
-  			<div class="large-12 medium-12 small-12 columns">
-  				<label>
-  					<?php echo lang('derivacion') ?>
-  					 <textarea type="text"  pattern="[a-zA-ZñÑ\s]+" name="informe[derivacion]" id="derivacion" rows="4"> </textarea>
-  					 <span class="form-error"><?php echo lang('alfabetico') ?></span>
-  				</label>
-  			</div>
 				<div class="large-12 medium-12 small-12 columns">
-  				<label>
-  					<?php echo lang('situacion') ?>
-  					 <textarea type="text"  pattern="[a-zA-ZñÑ\s]+" name="informe[situacion]" id="situacion" rows="4"> </textarea>
-  					 <span class="form-error"><?php echo lang('alfanumerico') ?></span>
-  				</label>
-  			</div>
-
-        <div class="large-8 medium-8 small-8 columns">
-  				<label>
-  					<?php echo lang('fecha.seguimiento') ?>
-  					 <input type="text" name="informe[fecha]" id="informe_fecha" class="datepicker">
-  					 <span class="form-error"><?php echo lang('alfanumerico.guion') ?></span>
-  				</label>
-  			</div>
+					<label>
+						Documentos Suscritos
+						<textarea type="text" name="informe[documento_suscrito]" id="documento_suscrito" rows="4"></textarea>
+					</label>
+				</div>
+				<div class="large-12 medium-12 small-12 columns">
+					<label>
+						Situación legal de caso
+						<textarea type="text" name="informe[situacion_legal]" id="situacion_legal" rows="4"></textarea>
+					</label>
+				</div>
+				<div class="large-12 medium-12 small-12 columns">
+					<label>
+						Ultima acción realizada
+						<textarea type="text" name="informe[accion_realizada]" id="accion_realizada" rows="4"></textarea>
+					</label>
+				</div>
+				<div class="large-12 medium-12 small-12 columns">
+					<label>
+						<?php echo lang('tipo.actas') ?>
+						<textarea type="text" pattern="[a-zA-ZñÑ\s]+" name="informe[tipo_actas]" id="tipo_actas" rows="4"> </textarea>
+						<span class="form-error"><?php echo lang('alfabetico') ?></span>
+					</label>
+				</div>
+				<div class="large-12 medium-12 small-12 columns">
+					<label>
+						<?php echo lang('derivacion') ?>
+						<textarea type="text"  pattern="[a-zA-ZñÑ\s]+" name="informe[derivacion]" id="derivacion" rows="4"> </textarea>
+						<span class="form-error"><?php echo lang('alfabetico') ?></span>
+					</label>
+				</div>
+				<div class="large-12 medium-12 small-12 columns">
+					<label>
+						<?php echo lang('situacion') ?>
+						<textarea type="text"  pattern="[a-zA-ZñÑ\s]+" name="informe[situacion]" id="situacion" rows="4"> </textarea>
+						<span class="form-error"><?php echo lang('alfanumerico') ?></span>
+					</label>
+				</div>
+				<div class="large-8 medium-8 small-8 columns">
+					<label>
+						<?php echo lang('fecha.seguimiento') ?>
+						<input type="text" name="informe[fecha]" id="informe_fecha" class="datepicker">
+						<span class="form-error"><?php echo lang('alfanumerico.guion') ?></span>
+					</label>
+				</div>
 				<div class="large-3 medium-3 small-3 columns">
 					<label>
 						<?php echo lang('numero.fojas') ?>
@@ -846,18 +914,12 @@
 						 <span class="form-error"><?php echo lang('numerico') ?></span>
 					</label>
 				</div>
-
-
 				<div class="large-12 columns center">
 					<button type="submit" name="edit_informe" class="button palette-Brown-500 bg">
-							<i class="fontello-ok"></i><?php echo lang('actualizar') ?>
+						<i class="fontello-ok"></i><?php echo lang('actualizar') ?>
 					</button>
 				</div>
-
-
 				<input type="hidden" name="id_denuncia" value="" id="informe_id_denuncia" />
-
-
 		</div>
 
 		<button class="close-button" data-close="" aria-label="Close reveal" type="button"> <span aria-hidden="true">&times;</span> </button>
@@ -1392,23 +1454,38 @@ $('#denunciado_dni').change(function(){
 	});
 
 	$('.editarinforme').click(function() {
-
 		var id = $(this).attr('content');
-
-			$.getJSON('<?php echo site_url('servicio/getInforme');?>', { id: id })
-
-			.done(function(data) {
-				$("#informe_instancias").val(data.instancias_jurisdicionales);
-				$("#informe_especifique").val(data.especifique);
-        $("#tipo_actas").val(data.tipo_actas);
-        $("#derivacion").val(data.derivacion);
-				$("#situacion").val(data.situacion);
-				$("#informe_fecha").val(data.fecha);
-				$("#informe_foja").val(data.numero_foja);
-
-				$("#informe_id_denuncia").val(data.id_denuncia);
-
-			});
+		$.getJSON('<?php echo site_url('servicio/getInforme');?>', { id: id })
+		.done(function(data) {
+			$("#informe_instancias").val(data.instancias_jurisdicionales);
+			$("#informe_especifique").val(data.especifique);
+			$("#tipo_actas").val(data.tipo_actas);
+			$("#derivacion").val(data.derivacion);
+			$("#situacion").val(data.situacion);
+			$("#informe_fecha").val(data.fecha);
+			$("#informe_foja").val(data.numero_foja);
+			$("#informe_id_denuncia").val(data.id_denuncia);
+			$("#otros_area_legal").val(data.informe_legal_otro);
+			$("#documento_suscrito").val(data.documento_suscrito);
+			$("#situacion_legal").val(data.situacion_legal);
+			$("#accion_realizada").val(data.accion_realizada);
+			var area_legal_radio = data.legal_acciones;
+			switch (area_legal_radio)
+			{
+				case 'ASESORAMIENTO':$("#legal_asesoramieno").prop("checked", true);$("#otros_area_legal").hide();break;
+				case 'ORIENTACIÓN':$("#legal_orientacion").prop("checked", true);$("#otros_area_legal").hide();break;
+				case 'ACOMPAÑAMIENTO':$("#legal_acompanamiento").prop("checked", true);$("#otros_area_legal").hide();break;
+				case 'CITACIÓN/NOTIFICACIÓN':$("#legal_citacion").prop("checked", true);$("#otros_area_legal").hide();break;
+				case 'SUSCRIPCIÓN DE ACTAS':$("#legal_suscripcion").prop("checked", true);$("#otros_area_legal").hide();break;
+				case 'OTRO':$("#legal_otro").prop("checked", true);$("#otros_area_legal").show();break;
+				case null:  
+					$("#legal_asesoramieno,#legal_orientacion,#legal_acompanamiento,#legal_citacion,#legal_suscripcion,#legal_otro").prop("checked", false);
+					$("#otros_area_legal").hide();
+					break;
+				default:
+				break;
+			}
+		});
 	});
 
 $('.editarpsicologico').click(function() {
