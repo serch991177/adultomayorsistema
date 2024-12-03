@@ -18,14 +18,14 @@
       <div class="large-4 columns large-centered">
         <label>
           <?php echo lang('fecha.inicial') ?>
-           <input type="text" name="historial[fecha_inicial]" id="fecha_inicial" class="datepicker">
+           <input type="text" name="historial[fecha_inicial]" id="fecha_inicial" class="datepicker" required>
            <span class="form-error"><?php echo lang('alfanumerico.guion') ?></span>
         </label>
       </div>
       <div class="large-4 columns large-centered">
         <label>
           <?php echo lang('fecha.final') ?>
-           <input type="text" name="historial[fecha_final]" id="fecha_final" class="datepicker">
+           <input type="text" name="historial[fecha_final]" id="fecha_final" class="datepicker" required>
            <span class="form-error"><?php echo lang('alfanumerico.guion') ?></span>
         </label>
       </div>
