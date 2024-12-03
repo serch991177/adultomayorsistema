@@ -26,7 +26,7 @@ class Historial extends CI_Controller{
       //$data['id_centro'] = $this->session->servidor->id_centro;
       $usuario_logeado = $this->session->servidor->nombres.' '.$this->session->servidor->paterno.' '.$this->session->servidor->materno;
       $data['usuario_logeado'] = $usuario_logeado;
-      $data['denuncias'] = $this->main->getListOrder('denuncia', array('id_denuncia'=>'ASC'), array('denuncia.id_usuario'=>$id_usuario), null, null, array('denunciante'=>'id_denunciante','victima'=>'id_victima','denunciado'=>'id_denunciado'));
+      $data['denuncias'] = $this->main->getListOrder('denuncia', array('id_denuncia'=>'ASC'), array('denuncia.id_usuario'=>$id_usuario,'fecha_denuncia >=' => $historial['fecha_inicial'],'fecha_denuncia <=' => $historial['fecha_final']), null, null, array('denunciante'=>'id_denunciante','victima'=>'id_victima','denunciado'=>'id_denunciado'));
 
       $this->load->view('historial/ver_denuncia',$data);
     }else{
