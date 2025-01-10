@@ -20,49 +20,86 @@ class Kardex extends CI_Controller{
 	 * @version			1.0  2018-10-16
 	 * @return 			VOID
 	 */
-	public function detallekardex()
-	{
-    //b_internal_encoding("UTF-8");
+  public function detallekardex()
+  {
+    $this->breadcrumbs->push('<div class="medium-12 columns"><i class="fa fontello-user"></i>' . $this->session->servidor->nombres . ' ' . $this->session->servidor->paterno . nbs(5) . '<i class="fa fontello-calendar"></i>' . fecha(date('Y-m-d')) . '</div>', 'inicio');
 
-  $this->breadcrumbs->push('<div class="medium-12 columns"><i class="fa fontello-user"></i>'. $this->session->servidor->nombres.' '.$this->session->servidor->paterno.nbs(5).'<i class="fa fontello-calendar"></i>'.fecha(date('Y-m-d')).'</div>', 'inicio');
-
-  $id_centro= $this->main->getField('usuario', 'id_centro', array('id_usuario'=>$this->session->servidor->id_usuario));
-  if(!empty($id_centro))
-    $nombre_centro= $this->main->getField('centro', 'nombre_centro', array('id_centro'=>$this->session->servidor->id_centro));
-  $data['sexos'] = array('FEMENINO'=>'FEMENINO', 'MASCULINO'=>'MASCULINO');
-	$data['subalcaldia'] = array('SUBALCALDIA ADELA ZAMUDIO'=>'SUBALCALDIA ADELA ZAMUDIO', 'SUBALCALDIA TUNARI-EPI NORTE'=>'SUBALCALDIA TUNARI-EPI NORTE', 'SUBALCALDIA MOLLE'=>'SUBALCALDIA MOLLE', 'SUBALCALDIA ALEJO CALATAYUD'=>'SUBALCALDIA ALEJO CALATAYUD', 'SUBALCALDIA ITOCTA-EPI SUR'=>'SUBALCALDIA ITOCTA-EPI SUR', 'SUBALCALDIA VALLE HERMOSO'=>'SUBALCALDIA VALLE HERMOSO');
-  $data['estados'] = array('SOLTERO'=>'SOLTERO', 'CASADO'=>'CASADO','CONVIVIENTE'=>'CONVIVIENTE','DIVORCIADO'=>'DIVORCIADO','SEPARADO'=>'SEPARADO','VIUDO'=>'VIUDO');
-  $data['expedidos'] = array('COCHABAMBA'=>'COCHABAMBA', 'LA PAZ'=>'LA PAZ', 'ORURO'=>'ORURO', 'POTOSI'=>'POTOSI','SUCRE'=>'SUCRE','TARIJA'=>'TARIJA','SANTA CRUZ'=>'SANTA CRUZ','PANDO'=>'PANDO','BENI'=>'BENI');
-  $parentescos =	$this->main->getListSelect('parentesco', 'id_parentesco, nombre', array('nombre'=>'ASC'));
-  $data['parentescos'] = $this->main->dropdown($parentescos, '');
-
+    $id_centro = $this->main->getField('usuario', 'id_centro', array('id_usuario' => $this->session->servidor->id_usuario));
+    if (!empty($id_centro)) {
+      $nombre_centro = $this->main->getField('centro', 'nombre_centro', array('id_centro' => $this->session->servidor->id_centro));
+    }
+    $data['sexos'] = array('FEMENINO' => 'FEMENINO', 'MASCULINO' => 'MASCULINO');
+    $data['subalcaldia'] = array(
+      'SUBALCALDIA ADELA ZAMUDIO' => 'SUBALCALDIA ADELA ZAMUDIO',
+      'SUBALCALDIA TUNARI-EPI NORTE' => 'SUBALCALDIA TUNARI-EPI NORTE',
+      'SUBALCALDIA MOLLE' => 'SUBALCALDIA MOLLE',
+      'SUBALCALDIA ALEJO CALATAYUD' => 'SUBALCALDIA ALEJO CALATAYUD',
+      'SUBALCALDIA ITOCTA-EPI SUR' => 'SUBALCALDIA ITOCTA-EPI SUR',
+      'SUBALCALDIA VALLE HERMOSO' => 'SUBALCALDIA VALLE HERMOSO',
+    );
+    $data['estados'] = array('SOLTERO' => 'SOLTERO', 'CASADO' => 'CASADO', 'CONVIVIENTE' => 'CONVIVIENTE', 'DIVORCIADO' => 'DIVORCIADO', 'SEPARADO' => 'SEPARADO', 'VIUDO' => 'VIUDO');
+    $data['expedidos'] = array('COCHABAMBA' => 'COCHABAMBA', 'LA PAZ' => 'LA PAZ', 'ORURO' => 'ORURO', 'POTOSI' => 'POTOSI', 'SUCRE' => 'SUCRE', 'TARIJA' => 'TARIJA', 'SANTA CRUZ' => 'SANTA CRUZ', 'PANDO' => 'PANDO', 'BENI' => 'BENI');
+    $parentescos = $this->main->getListSelect('parentesco', 'id_parentesco, nombre', array('nombre' => 'ASC'));
+    $data['parentescos'] = $this->main->dropdown($parentescos, '');
 
     $nombre_rol = $this->session->servidor->rol;
+    $data['nombre_rol'] = $nombre_rol;
 
-    $data['nombre_rol']=$nombre_rol;
-
-    if($nombre_rol == 'ADMINISTRADOR' || $nombre_rol == 'REVISOR'){
+    if ($nombre_rol == 'ADMINISTRADOR' || $nombre_rol == 'REVISOR') {
       $data['parte_area'] = 'TODOS';
-    }
-    else{
-      $parte = explode(" ",$nombre_rol);
+      $data['kardexs'] = $this->main->getListOrder('kardex', null, array('kardex.estado' => 'AC'));
+    } else {
+      $parte = explode(" ", $nombre_rol);
       $parte_rol = $parte[0];
       $data['parte_area'] = $parte[1];
+      if ($parte_rol == 'FUNCIONARIO') {
+        $data['kardexs'] = $this->main->getListOrder('kardex', null, array('kardex.id_centro' => $id_centro, 'kardex.estado' => 'AC'));
+      }
     }
 
-    $gestion = $this->session->userdata('gestion');
-    $id_gestion = $this->main->getField('gestion', 'id_gestion', array('gestion'=>$gestion));
+    setcookie("demo", $this->db->last_query(), time() + 86500);
+    $this->load->view('kardex/detalle_kardexs', $data);
+  }
+	/*public function detallekardex()
+	{
+    //b_internal_encoding("UTF-8");
+    $this->breadcrumbs->push('<div class="medium-12 columns"><i class="fa fontello-user"></i>'. $this->session->servidor->nombres.' '.$this->session->servidor->paterno.nbs(5).'<i class="fa fontello-calendar"></i>'.fecha(date('Y-m-d')).'</div>', 'inicio');
+    $id_centro= $this->main->getField('usuario', 'id_centro', array('id_usuario'=>$this->session->servidor->id_usuario));
+    if(!empty($id_centro))
+      $nombre_centro= $this->main->getField('centro', 'nombre_centro', array('id_centro'=>$this->session->servidor->id_centro));
+      $data['sexos'] = array('FEMENINO'=>'FEMENINO', 'MASCULINO'=>'MASCULINO');
+      $data['subalcaldia'] = array('SUBALCALDIA ADELA ZAMUDIO'=>'SUBALCALDIA ADELA ZAMUDIO', 'SUBALCALDIA TUNARI-EPI NORTE'=>'SUBALCALDIA TUNARI-EPI NORTE', 'SUBALCALDIA MOLLE'=>'SUBALCALDIA MOLLE', 'SUBALCALDIA ALEJO CALATAYUD'=>'SUBALCALDIA ALEJO CALATAYUD', 'SUBALCALDIA ITOCTA-EPI SUR'=>'SUBALCALDIA ITOCTA-EPI SUR', 'SUBALCALDIA VALLE HERMOSO'=>'SUBALCALDIA VALLE HERMOSO');
+      $data['estados'] = array('SOLTERO'=>'SOLTERO', 'CASADO'=>'CASADO','CONVIVIENTE'=>'CONVIVIENTE','DIVORCIADO'=>'DIVORCIADO','SEPARADO'=>'SEPARADO','VIUDO'=>'VIUDO');
+      $data['expedidos'] = array('COCHABAMBA'=>'COCHABAMBA', 'LA PAZ'=>'LA PAZ', 'ORURO'=>'ORURO', 'POTOSI'=>'POTOSI','SUCRE'=>'SUCRE','TARIJA'=>'TARIJA','SANTA CRUZ'=>'SANTA CRUZ','PANDO'=>'PANDO','BENI'=>'BENI');
+      $parentescos =	$this->main->getListSelect('parentesco', 'id_parentesco, nombre', array('nombre'=>'ASC'));
+      $data['parentescos'] = $this->main->dropdown($parentescos, '');
 
-    if($nombre_rol == 'ADMINISTRADOR'|| $nombre_rol == 'REVISOR')
+
+      $nombre_rol = $this->session->servidor->rol;
+
+      $data['nombre_rol']=$nombre_rol;
+
+      if($nombre_rol == 'ADMINISTRADOR' || $nombre_rol == 'REVISOR'){
+        $data['parte_area'] = 'TODOS';
+      }
+      else{
+        $parte = explode(" ",$nombre_rol);
+        $parte_rol = $parte[0];
+        $data['parte_area'] = $parte[1];
+      }
+
+      $gestion = $this->session->userdata('gestion');
+      $id_gestion = $this->main->getField('gestion', 'id_gestion', array('gestion'=>$gestion));
+      if($nombre_rol == 'ADMINISTRADOR'|| $nombre_rol == 'REVISOR')
         $data['kardexs'] = $this->main->getListOrder('kardex', null, array('kardex.id_gestion'=>$id_gestion, 'kardex.estado' =>'AC'));
-
-    else if($parte_rol == 'FUNCIONARIO')
+      else if($parte_rol == 'FUNCIONARIO')
         $data['kardexs'] = $this->main->getListOrder('kardex', null, array('kardex.id_centro'=>$id_centro, 'kardex.id_gestion'=>$id_gestion, 'kardex.estado' =>'AC'));
+      setcookie("demo",$this->db->last_query(),time()+86500);
 
-    setcookie("demo",$this->db->last_query(),time()+86500);
+      //echo '<pre>'; var_dump($data); exit; echo '</pre>';
 
     $this->load->view('kardex/detalle_kardexs', $data);
-	}
+	}*/
   public function editkardex()
 	{
     mb_internal_encoding("UTF-8");
